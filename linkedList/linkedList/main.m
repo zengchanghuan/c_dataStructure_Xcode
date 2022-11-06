@@ -10,7 +10,55 @@
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
         // insert code here...
-        LinkList list = initList();
+        LinkList head = initList();
+        for(int i = 0; i < 10; ++i){
+//            insertBack(head, i*100);
+//            insertList(head, i + 10, i);
+            insertBack(head, i + 10);
+
+//            printList(head);
+        }
+//        NSLog(@"**********************");
+//        printList(head);
+//        insertList(head, 342, 1);
+//        insertList(head, 34242, 11);
+//        printList(head);
+//        NSLog(@"length = %d",length(head));
+
+        deleteWithValue(head, 19);
+//        printList(head);
+
+//        while (!isEmpty(head)) {
+////            deleteFirst(head);
+////            deleteLast(head);
+//            printList(head);
+//
+//        }
+        /*
+        LinkList head2 = initList();
+        for(int i = 1; i < 10; ++i){
+            insertFront(head2, i * 100);
+            printList(head2);
+
+        }
+        */
+
+
+        LinkList head2 = initList();
+        int array[] = {3,43,43,43,324,54,43,323,43,43,3,64};
+        int length = sizeof(array)/sizeof(array[0]);
+        for (int i = 0; i < length; i++) {
+            insertBack(head2, array[i]);
+        }
+        printList(head2);
+//        deleteWithAllValue(head2, 43);
+        clearList(head2);
+        printList(head2);
+
+
+        
+
+
     }
     return 0;
 }

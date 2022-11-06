@@ -32,16 +32,57 @@ typedef struct ListNode *LinkList;
 /// 初始化带头结点的链表
 ListNode * initList(void);
 
-bool insertList(LinkList head,Element element,int index);
+//判空
+bool isEmpty(LinkList head);
 
-bool deleteList(LinkList head,int index);
+//返回结点的个数
+int length(LinkList list);
+
+//按值查询
+ListNode * findValue(LinkList head,Element value);
+
+//按值查询，返回前驱地址
+ListNode *FindValuePrecursor(LinkList head,Element value);
+
+//按位查询返回结点
+ListNode * findIndex(LinkList head,int index);
+
+//按位插入
+bool insertList(LinkList head,Element element,int index);
 
 Element *getList(LinkList head,int index);
 
 int findList(LinkList head,Element element);
 
-int length(LinkList list);
-
 void printList(LinkList head);
 
+//尾插法
+void insertBack(LinkList head,Element value);
+
+//头插法
+void insertFront(LinkList head,Element value);
+
+//删除prt的后续结点
+bool deleteNext(LinkList head,ListNode *ptr);
+
+//从首元素删除链表元素
+void deleteFront(LinkList head);
+
+//从尾部删除链表元素
+void deleteBack(LinkList head);
+
+//按位删除
+bool deleteWithIndex(LinkList head,int index);
+
+//按值删除
+bool deleteWithValue(LinkList head,Element value);
+
+//删除所有与所给值相等的结点
+void deleteWithAllValue(LinkList head,Element value);
+
+//清空元素 保留头结点
+void clearList(LinkList head);
+
+//销毁链表 头结点亦删除
+void destroyList(LinkList head);
 #endif /*  LinkedList_h */
