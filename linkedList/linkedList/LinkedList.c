@@ -371,7 +371,40 @@ void destroyList(LinkList head){
     FreeNode(head);
 }
 
+//void reverse(LinkList head){
+//
+//}
+//不带头结点的反转链表方法
+void reverseNoLinkedHead(LinkList head){
+    assert(head != NULL);
+    
+    ListNode *current,*prev,*next;
+    current = head;
+    prev = NULL;
+    while (current != NULL) {
+        next = current->next;
+        current->next = prev;
+        prev = current;
+        current = next;
+    }
+    head = prev;
+    
+}
 
-
+void reverse(LinkList head){
+    assert(head != NULL);
+    
+    ListNode *pre = NULL;
+    ListNode *s = NULL;
+    ListNode *p = head->next;
+    
+    while (p != NULL) {
+        s = p;
+        p = p->next;
+        s->next = pre;
+        pre = s;
+    }
+    head->next = pre;
+}
 
 

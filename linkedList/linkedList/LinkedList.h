@@ -85,4 +85,7 @@ void clearList(LinkList head);
 
 //销毁链表 头结点亦删除
 void destroyList(LinkList head);
+
+//链表转置
+void reverse(LinkList head);
 #endif /*  LinkedList_h */
