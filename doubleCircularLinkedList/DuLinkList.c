@@ -113,3 +113,14 @@ Status insertIndex(DuLinkList *list,int index,ElemType value){
     assert(list != NULL);
     return insertPrev(list, findIndex(list,index),value);
 }
+
+int getSize(const DuLinkList *list){
+    assert(list != NULL);
+
+    return list->size;
+}
+
+bool isEmpty(const DuLinkList *list){
+    assert(list != NULL);
+    return getSize(list) == 0;
+}

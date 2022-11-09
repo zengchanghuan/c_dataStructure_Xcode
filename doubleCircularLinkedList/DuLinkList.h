@@ -42,4 +42,8 @@ DuLNode *findIndex(const DuLinkList *list,int index);
 
 //按位插入
 Status insertIndex(DuLinkList *list,int index,ElemType value);
+
+int getSize(const DuLinkList *list);
+
+bool isEmpty(const DuLinkList *list);
 #endif
