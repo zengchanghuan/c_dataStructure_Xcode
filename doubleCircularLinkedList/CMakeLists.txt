@@ -3,4 +3,4 @@ project(doubleCircularLinkedList C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(doubleCircularLinkedList main.c)
+add_executable(doubleCircularLinkedList main.c DuLinkList.h DuLinkList.c)
