@@ -108,4 +108,7 @@ ListNode * listPartition(LinkList head,Element x);
 //单链表快排
 void listQucikSort(ListNode *begin,ListNode *end);
 
+//合并丙价目有序链表 升序
+ListNode *merge(LinkList headA,LinkList headB);
+
 #endif /*  LinkedList_h */

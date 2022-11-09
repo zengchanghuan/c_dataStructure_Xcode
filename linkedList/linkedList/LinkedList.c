@@ -808,5 +808,109 @@ void listQucikSort(ListNode *begin,ListNode *end){
     listQucikSort(begin, pmid);
     listQucikSort(pmid->next,end);
     
+}
+
+//合并丙价目有序链表
+ListNode *merge(LinkList headA,LinkList headB){
+    ListNode *pa = headA;
+    ListNode *pb = headB;
+    ListNode *headC = createNode();
+    ListNode *pc = headC;
+    pc->next = NULL;
     
+    while (pa != NULL && pb != NULL) {
+        if (pa->element <= pb->element) {
+            
+            pc->next = pa;
+            pa = pa->next;
+            
+        } else {
+            pc->next = pb;
+            pb = pb->next;
+        }
+        pc = pc->next;
+
+    }
+    
+    if (pa != NULL) {
+        pc->next = pa;
+    }
+    if (pb != NULL) {
+        pc->next = pb;
+    }
+    
+    pc = headC;
+    headC = pc->next;
+    free(pc);
+    return  headC;
+}
+
+/**
+ 不带头结点的
+ 
+ 给定两个用链表表示的整数，每个节点包含一个数位。
+
+ 这些数位是反向存放的，也就是个位排在链表首部。
+
+ 编写函数对这两个整数求和，并用链表形式返回结果。
+ */
+struct ListNode* addTwoNumbers(LinkList headA,LinkList headB){
+    if (headA == NULL && headB == NULL) {
+        return NULL;
+    }
+    
+    ListNode *pa = headA;
+    ListNode *pb = headB;
+    
+//    ListNode *headC = createNode();
+    ListNode *headC = malloc(sizeof(ListNode));
+    ListNode *pc = headC;
+    pc->next = NULL;
+    
+    //求和位
+    int sum = 0;
+    
+    //进位位
+    int car = 0;
+    while (pa != NULL || pb != NULL || car != 0) {
+        if (pa != NULL) {
+            sum += pa->element;
+            pa = pa->next;
+        }
+        
+        if (pa != NULL) {
+            sum = pb->element;
+            pb = pb->next;
+        }
+        car = sum / 10;
+        sum = sum % 10;
+        
+//        ListNode *s = createNode();
+        ListNode *s = malloc(sizeof(ListNode));
+
+        s->next = NULL;
+        s->element = sum;
+        
+        pc->next = s;
+        pc = pc->next;
+    }
+    
+    pc = headC;
+    headC = headC->next;
+    free(pc);
+    pc = NULL;
+    
+    return headC;
+     
+}
+
+
+//带头结点的单循环链表
+ListNode *initCList(void){
+    ListNode *s = createNode();
+    if (NULL == s) {
+        exit(1);
+    }
+    s->next = s;
+    return s;
 }
