@@ -780,3 +780,33 @@ ListNode * listPartition(LinkList head,Element x){
     return head;
 }
 
+ListNode * parition(ListNode *beginNode,ListNode *endNode){
+    if (beginNode == endNode || beginNode->next == endNode) {
+        return beginNode;
+    }
+    ListNode *slow = beginNode;
+    ListNode *fast = beginNode->next;
+    int temp = beginNode->element;
+    
+    while (fast != endNode) {
+        if (fast->element <= temp) {
+            slow = slow->next;
+            swap(&slow->element, &fast->element);
+        }
+        fast = fast->next;
+    }
+    swap(&slow->element, &beginNode->element);
+    return slow;
+}
+//单链表快排
+void listQucikSort(ListNode *begin,ListNode *end){
+    if (begin == end || begin->next == end) {
+        return;
+    }
+    
+    ListNode *pmid = parition(begin, end);
+    listQucikSort(begin, pmid);
+    listQucikSort(pmid->next,end);
+    
+    
+}

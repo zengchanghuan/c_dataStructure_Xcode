@@ -67,8 +67,8 @@ int main(int argc, const char * argv[]) {
         }
         printList(paritionHead);
         
-        paritionHead->next = listPartition(paritionHead->next, 50);
-        
+//        paritionHead->next = listPartition(paritionHead->next, 50);
+        listQucikSort(paritionHead->next, NULL);
         printList(paritionHead);
 
 

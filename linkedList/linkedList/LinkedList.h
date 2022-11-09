@@ -105,4 +105,7 @@ ListNode *getIntersectNode(LinkList headA,LinkList headB);
 //分割链表
 ListNode * listPartition(LinkList head,Element x);
 
+//单链表快排
+void listQucikSort(ListNode *begin,ListNode *end);
+
 #endif /*  LinkedList_h */
