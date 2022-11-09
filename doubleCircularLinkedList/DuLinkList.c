@@ -7,6 +7,9 @@
 #include <assert.h>
 #include "DuLinkList.h"
 
+
+
+
 DuLNode *createNode(void) {
     DuLNode *node = malloc(sizeof(DuLNode));
     if (node != NULL) {
@@ -56,16 +59,16 @@ DuLNode *FindValue(DuLinkList *list, ElemType value) {
     return p;
 }
 
-bool insertPrev(DuLinkList *list, DuLNode *p, ElemType value) {
+Status insertPrev(DuLinkList *list, DuLNode *p, ElemType value) {
     assert(list != NULL);
 
     if (NULL == p) {
-        return false;
+        return NULLPRT;
     }
 
     DuLNode *s = createNode();
     if (NULL == s) {
-        return false;
+        return OVERFLOW;
     }
 
     s->data = value;
@@ -88,4 +91,25 @@ void insertBack(DuLinkList *list, ElemType value) {
     assert(list != NULL);
     insertPrev(list, list->head, value);
 
+}
+
+DuLNode *findIndex(const DuLinkList *list,int index){
+    assert(list != NULL);
+    if (index < 1 || index > list->size){
+        return NULL;
+    }
+
+    DuLNode  *p = list->head->next;
+
+    int i = 1;
+    while (i < index){
+        i += 1;
+        p = p->next;
+    }
+    return p;
+}
+
+Status insertIndex(DuLinkList *list,int index,ElemType value){
+    assert(list != NULL);
+    return insertPrev(list, findIndex(list,index),value);
 }

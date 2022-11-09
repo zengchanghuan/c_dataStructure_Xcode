@@ -4,7 +4,10 @@
 
 #ifndef DOUBLECIRCULARLINKEDLIST_DULINKLIST_H
 #define DOUBLECIRCULARLINKEDLIST_DULINKLIST_H
+#define OVERFLOW -1
+#define NULLPRT -2
 
+typedef int Status;
 #include <stdbool.h>
 
 typedef int ElemType;
@@ -27,10 +30,16 @@ void printList(const DuLinkList *list);
 
 DuLNode * FindValue(DuLinkList *list,ElemType value);
 
-bool insertPrev(DuLinkList *list,DuLNode *p,ElemType value);
+Status insertPrev(DuLinkList *list,DuLNode *p,ElemType value);
 
 //头插法 头结点后插入
 void insertFront(DuLinkList *list,ElemType value);
 
 void insertBack(DuLinkList *list,ElemType value);
+
+//按位查找
+DuLNode *findIndex(const DuLinkList *list,int index);
+
+//按位插入
+Status insertIndex(DuLinkList *list,int index,ElemType value);
 #endif
