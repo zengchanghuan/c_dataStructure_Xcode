@@ -115,7 +115,7 @@ void insertBack(LinkList head,Element value){
     while (p->next != NULL) {
         p = p->next;
     }
-    insertNext(head, p, value); 
+    insertNext(head, p, value);
     
     
 }
@@ -219,7 +219,7 @@ bool deleteWithValue2(LinkList head,Element value){
     }
     
     return res;
-
+    
 }
 
 //按值删除 优化版
@@ -268,7 +268,7 @@ Element *getList(LinkList head,int index);
 //基础版
 ListNode * findValue2(LinkList head,Element value) {
     assert(head != NULL);
-
+    
     ListNode *p = head->next;
     
     while (p != NULL && p->element != value) {
@@ -358,7 +358,7 @@ void clearList2(LinkList head){
 //清空元素 优化版
 void clearList(LinkList head){
     assert(head != NULL);
-
+    
     while (!isEmpty(head)) {
         deleteFront(head);
     }
@@ -371,11 +371,41 @@ void destroyList(LinkList head){
     FreeNode(head);
 }
 
-//void reverse(LinkList head){
-//
-//}
+//不带头结点的反转链表方法 递归法
+ListNode *reverseNoHead2(ListNode *p){
+    if(p == NULL || p->next == NULL){
+        return p;
+    }
+    
+    ListNode *firstNode = reverseNoHead2(p->next);
+    p->next->next = p;
+    p->next = NULL;
+    return firstNode;
+}
+
+//不带头结点的反转链表方法 三指针法
+
+ListNode *reverseNoHead3(LinkList head){
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+    
+    ListNode *pre = NULL;
+    ListNode *s = NULL;
+    ListNode *p = head;
+    
+    while (p != NULL) {
+        s = p;
+        p = p->next;
+        s->next = pre;
+        pre = s;
+    }
+    
+    return pre;
+}
+
 //不带头结点的反转链表方法
-void reverseNoLinkedHead(LinkList head){
+void reverseNoHead(LinkList head){
     assert(head != NULL);
     
     ListNode *current,*prev,*next;
@@ -391,8 +421,290 @@ void reverseNoLinkedHead(LinkList head){
     
 }
 
+//返回链表中间结点
+ListNode * listMid(LinkList head){
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+    
+    int n = 0;
+    ListNode *p = head;
+    
+    while (p != NULL) {
+        n = n + 1;
+        p = p->next;
+    }
+    p = head;
+    for (int i = 0; i < n/2; i++) {
+        p = p->next;
+    }
+    return p;
+}
+
+//返回链表中间结点 快慢指针
+ListNode * listMid2(LinkList head){
+    if (head == NULL || head->next == NULL) {
+        return head;
+    }
+    ListNode *fast = head;
+    ListNode *slow = head;
+    while (fast != NULL && fast->next != NULL) {
+        slow = slow->next;
+        fast = fast->next;
+        if (NULL == fast) {
+            break;
+        }
+        fast = fast->next;
+    }
+    return slow;
+}
+
+//链表中倒数第k个节点
+void printList_k_c(LinkList head,int k){
+    if (head == NULL || k < 1) {
+        return;
+    }
+    
+    ListNode *p = head;
+    ListNode *cur = head;
+    while (p != NULL && k--) {
+        p = p->next;
+    }
+    if (NULL == p) {
+        return;
+    }
+    while (p != NULL) {
+        cur = cur->next;
+        p = p->next;
+    }
+    printf("%d \n",cur->element);
+}
+
+//判断单链表是否有环，有环返回环的起点
+bool isCycle(LinkList head){
+    bool res = true;
+    if(head == NULL){
+        return !res;
+    }
+    
+    ListNode *slow = head;
+    ListNode *fast = head->next;
+    
+    while (slow != fast) {
+        if (fast == NULL || fast->next == NULL) {
+            res = false;
+            break;
+        }
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    
+    
+    return res;
+}
+
+ListNode *getCycleBegin(LinkList head) {
+    if (head == NULL) {
+        return NULL;
+    }
+    
+    ListNode *slow = head;
+    ListNode *fast = head->next;
+    
+    while (slow != fast) {
+        if (fast == NULL || fast->next == NULL) {
+            return NULL;
+        }
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    slow = head;
+    while (slow != fast) {
+        slow = slow->next;
+        fast = fast->next;
+    }
+    //快 慢都可以
+    return slow;
+    
+}
+
+//暴力法
+ListNode *getIntersectNode2(LinkList headA,LinkList headB)
+{
+    if(headA == NULL || headB == NULL || headA->next == NULL || headB->next == NULL){
+        return NULL;
+    }
+    ListNode *pa = headA->next;
+    while (pa != NULL) {
+        ListNode *pb = headB->next;
+        while (pb != NULL && pb != pa) {
+            pb = pb->next;
+        }
+        if (pb == pa) {
+            return pa;
+        }
+        pa = pa->next;
+    }
+    return NULL;
+}
+
+//获取公共结点再处理 有暇 待测试
+ListNode *getIntersectNode4(LinkList headA,LinkList headB){
+    if(headA == NULL || headB == NULL || headA->next == NULL || headB->next == NULL){
+        return NULL;
+    }
+    
+    ListNode *pa = headA->next;
+    ListNode *pb = headB->next;
+    
+    while (pa != pb) {
+        if (pa ==  NULL) {
+            pa = headB->next;
+            pa = pa->next;
+        }
+        if(pb == NULL){
+            pb = headA->next;
+            pb = pb->next;
+        }
+    }
+    return pa;
+    
+}
+ListNode *getIntersectNode3(LinkList headA,LinkList headB){
+    if(headA == NULL || headB == NULL || headA->next == NULL || headB->next == NULL){
+        return NULL;
+    }
+    
+    int lengthA = length(headA);
+    int lengthB = length(headB);
+    
+    ListNode *pa = headA->next;
+    ListNode *pb = headB->next;
+    
+    while (lengthA > lengthB) {
+        pa = pa->next;
+        --lengthA;
+    }
+    while (lengthB > lengthA) {
+        pb = pb->next;
+        lengthB--;
+    }
+    
+    while (pa != NULL && pb  != NULL && pa != pb) {
+        pa = pa->next;
+        pb = pb->next;
+    }
+    
+    return pa;
+    
+    
+}
+ListNode *Reverse(ListNode *p){
+    if (p == NULL || p->next == NULL) {
+        return p;
+    }
+    
+    ListNode *fn = Reverse(p->next);
+    p->next->next = p;
+    p->next = NULL;
+    return fn;
+}
+
+//递归法
 void reverse(LinkList head){
     assert(head != NULL);
+    
+    //加上这个更好
+    if (head->next == NULL || head->next->next == NULL){
+        return;
+    }
+    ListNode *p = head->next;
+    head->next = Reverse(p);
+}
+//利用stack反转链表 2N
+void reverse5(LinkList head){
+    assert(head != NULL);
+    
+    //加上这个更好
+    if (head->next == NULL || head->next->next == NULL){
+        return;
+    }
+    
+    int lenth = 0;
+    ListNode *p = head->next;
+    while (p != NULL) {
+        lenth++;
+        p = p->next;
+    }
+    int *stack = (int *)malloc(sizeof(int)*lenth);
+    int top = -1;
+    p = head->next;
+    
+    while (p != NULL) {
+        top += 1;
+        stack[top] = p->element;
+        p = p->next;
+    }
+    p = head->next;
+    
+    while (p != NULL) {
+        p->element = stack[top];
+        top = top - 1;
+        p = p->next;
+    }
+    free(stack);
+    stack = NULL;
+    
+}
+//头插法反转链表
+void reverse4(LinkList head){
+    assert(head != NULL);
+    
+    //加上这个更好
+    if (head->next == NULL || head->next->next == NULL){
+        return;
+    }
+    
+    ListNode *p = head->next;
+    head->next = NULL;
+    
+    while (p != NULL) {
+        Element value = p->element;
+        p = p->next;
+        insertFront(head, value);
+    }
+    
+}
+//二指针法
+void reverse2(LinkList head){
+    assert(head != NULL);
+    
+    //加上这个更好
+    if (head->next == NULL || head->next->next == NULL){
+        return;
+    }
+    
+    
+    ListNode *s = NULL;
+    ListNode *p = head->next;
+    head->next = NULL;
+    while (p != NULL) {
+        s = p;
+        p = p->next;
+        s->next = head->next;
+        head->next = s;
+        
+    }
+    
+}
+//三指针法
+void reverse3(LinkList head){
+    assert(head != NULL);
+    
+    //加上这个更好
+    if (head->next == NULL || head->next->next == NULL){
+        return;
+    }
     
     ListNode *pre = NULL;
     ListNode *s = NULL;
@@ -407,4 +719,64 @@ void reverse(LinkList head){
     head->next = pre;
 }
 
+//不带头结点单链表 旋转
+ListNode * rotateRight(LinkList head,int k){
+    if (head == NULL || head->next) {
+        return head;
+    }
+    
+    int n = 1;
+    ListNode *p = head;
+    while (p->next != NULL) {
+        n += 1;
+        p = p->next;
+    }
+    int mov = n - k;
+    while (mov--) {
+        p = p->next;
+    }
+    head = p->next;
+    p->next = NULL;
+    return head;
+}
+
+ListNode * listPartition(LinkList head,Element x){
+    if (head == NULL || head->next == NULL) {
+        return NULL;
+    }
+    ListNode *pre = createNode();
+    ListNode *newHead = createNode();
+    
+    pre->next = head;
+    head = pre;
+    newHead->next = NULL;
+    
+    ListNode *p= pre->next;
+    ListNode *s = newHead;
+    
+    while (p != NULL) {
+        if (p->element >= x) {
+            
+            pre->next = p->next;
+            p->next = NULL;// s->next = null
+            s->next = p;
+            s = s->next;
+            p = pre->next;
+        } else {
+            p = p->next;
+            pre = pre->next;
+        }
+       
+    }
+    pre->next = newHead->next;
+    pre = head;
+    head = head->next;
+    
+    free(pre);
+    pre = NULL;
+    free(newHead);
+    newHead = NULL;
+    
+    return head;
+}
 

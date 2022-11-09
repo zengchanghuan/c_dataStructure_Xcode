@@ -57,9 +57,19 @@ int main(int argc, const char * argv[]) {
 //        clearList(head2);
         reverse(head2);
         printList(head2);
+        reverse(head2);
+        printList(head2);
 
 
+        LinkList paritionHead = initList();
+        for (int i = 0; i < 10; i++) {
+            insertBack(paritionHead, rand()%100);
+        }
+        printList(paritionHead);
         
+        paritionHead->next = listPartition(paritionHead->next, 50);
+        
+        printList(paritionHead);
 
 
     }

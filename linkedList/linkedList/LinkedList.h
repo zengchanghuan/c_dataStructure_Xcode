@@ -88,4 +88,21 @@ void destroyList(LinkList head);
 
 //链表转置
 void reverse(LinkList head);
+
+ListNode * listMid1(LinkList head);
+
+ListNode * listMid2(LinkList head);
+
+//判断单链表是否有环
+bool isCycle(LinkList head);
+
+//判断单链表是否有环，有环返回环的起点
+ListNode *getCycleBegin(LinkList head);
+
+//intersect
+ListNode *getIntersectNode(LinkList headA,LinkList headB);
+
+//分割链表
+ListNode * listPartition(LinkList head,Element x);
+
 #endif /*  LinkedList_h */
