@@ -1,6 +1,9 @@
 #include <stdio.h>
+#include "stack.h"
 
 int main() {
-    printf("Hello, World!\n");
+    Stack stack;
+    initStack(&stack);
+    printf("\n");
     return 0;
 }

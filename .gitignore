@@ -111,3 +111,8 @@ stackWithArray/cmake-build-debug/CMakeFiles/3.23.2/CMakeSystem.cmake
 stackWithArray/cmake-build-debug/CMakeFiles/3.23.2/CompilerIdC/CMakeCCompilerId.c
 stackWithArray/cmake-build-debug/CMakeFiles/3.23.2/CompilerIdC/CMakeCCompilerId.o
 stackWithArray/cmake-build-debug/Testing/Temporary/LastTest.log
+stackWithArray/cmake-build-debug/.ninja_deps
+stackWithArray/cmake-build-debug/.ninja_log
+stackWithArray/cmake-build-debug/stackWithArray
+stackWithArray/cmake-build-debug/CMakeFiles/stackWithArray.dir/main.c.o
+stackWithArray/cmake-build-debug/CMakeFiles/stackWithArray.dir/stack.c.o
