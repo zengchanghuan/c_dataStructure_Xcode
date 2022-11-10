@@ -3,4 +3,4 @@ project(LinkedList_cLion C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(LinkedList_cLion main.c)
+add_executable(LinkedList_cLion main.c LinkedList.h LinkedList.c)
