@@ -61,4 +61,5 @@ void destroyList(DuLinkList *list);
 bool deleteValue(DuLinkList *list,ElemType value);
 
 bool deleteAllEqualValue(DuLinkList *list,ElemType value);
+
 #endif
