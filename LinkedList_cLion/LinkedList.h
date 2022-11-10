@@ -5,6 +5,8 @@
 #ifndef LINKEDLIST_CLION_LINKEDLIST_H
 #define LINKEDLIST_CLION_LINKEDLIST_H
 
+#include <stdbool.h>
+
 typedef  int Element;
 
 struct ListNode{
@@ -20,4 +22,10 @@ typedef struct ListNode *Node;
 
 void initList(Node head);
 
+bool insert(Node head,Element data,int index);
+
+
+void printList(Node head);
+
+void deleteIndex(Node head,int index);
 #endif //LINKEDLIST_CLION_LINKEDLIST_H
