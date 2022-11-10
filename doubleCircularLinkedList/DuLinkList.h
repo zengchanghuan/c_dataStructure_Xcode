@@ -5,7 +5,6 @@
 #ifndef DOUBLECIRCULARLINKEDLIST_DULINKLIST_H
 #define DOUBLECIRCULARLINKEDLIST_DULINKLIST_H
 #define OVERFLOW -1
-#define NULLPRT -2
 
 typedef int Status;
 #include <stdbool.h>
@@ -28,7 +27,7 @@ void initDuList(DuLinkList *list);
 
 void printList(const DuLinkList *list);
 
-DuLNode * FindValue(DuLinkList *list,ElemType value);
+DuLNode * findValue(DuLinkList *list,ElemType value);
 
 Status insertPrev(DuLinkList *list,DuLNode *p,ElemType value);
 
@@ -46,4 +45,18 @@ Status insertIndex(DuLinkList *list,int index,ElemType value);
 int getSize(const DuLinkList *list);
 
 bool isEmpty(const DuLinkList *list);
+
+Status delete(DuLinkList *list,DuLNode *prt);
+
+//从头结点删
+void deleteFront(DuLinkList *list);
+
+void deleteBack(DuLinkList *list);
+
+void clearList(DuLinkList *list);
+
+void destroyList(DuLinkList *list);
+
+//按值删除
+bool deleteValue(DuLinkList *list,ElemType value);
 #endif

@@ -19,6 +19,9 @@ DuLNode *createNode(void) {
     return node;
 }
 
+void freeNode(DuLNode *p){
+    free(p);
+}
 
 void initDuList(DuLinkList *list) {
     assert(list != NULL);
@@ -47,7 +50,7 @@ void printList(const DuLinkList *list) {
 
 }
 
-DuLNode *FindValue(DuLinkList *list, ElemType value) {
+DuLNode *findValue(DuLinkList *list, ElemType value) {
     assert(list != NULL);
     DuLNode *p = list->head->next;
     while (p != list->head && p->data != value) {
@@ -63,7 +66,7 @@ Status insertPrev(DuLinkList *list, DuLNode *p, ElemType value) {
     assert(list != NULL);
 
     if (NULL == p) {
-        return NULLPRT;
+        return NULL;
     }
 
     DuLNode *s = createNode();
@@ -124,3 +127,69 @@ bool isEmpty(const DuLinkList *list){
     assert(list != NULL);
     return getSize(list) == 0;
 }
+
+Status delete(DuLinkList *list,DuLNode *prt){
+    assert(list != NULL);
+
+    if (NULL == prt){
+        return NULL;
+    }
+    prt->prev->next = prt->next;
+    prt->next->prev = prt->prev;
+}
+
+void deleteFront(DuLinkList *list){
+    assert(list != NULL);
+    delete(list,list->head->next);
+}
+
+void deleteBack(DuLinkList *list){
+    assert(list != NULL);
+    delete(list,list->head->prev);
+}
+
+void clearList(DuLinkList *list){
+    assert(list != NULL);
+    while (!isEmpty(list)){
+        deleteFront(list);
+    }
+}
+
+void destroyList(DuLinkList *list){
+    assert(list != NULL);
+    clearList(list);
+    freeNode(list->head);
+    list->head = NULL;
+}
+
+bool deleteValue(DuLinkList *list,ElemType value){
+    assert(list != NULL);
+    bool res = false;
+    DuLNode  *p = findValue(list,value);
+    if (p != NULL){
+        delete(list,p);
+        res = true;
+    }
+    return res;
+}
+
+//效率不够高 基础版
+bool deleteAllEqualValue2(DuLinkList *list,ElemType value){
+    assert(list != NULL);
+    while (deleteValue(list,value));
+
+}
+
+//优化版
+bool deleteAllEqualValue(DuLinkList *list,ElemType value){
+    assert(list != NULL);
+    DuLNode  * p = list->head->next;
+    while (p != list->head){
+        if (p->data == value){
+            delete(list,p);
+        }
+        p = p->next;
+    }
+
+}
+
