@@ -20,13 +20,16 @@ typedef struct ListNode *Node;
 //    Node head;
 //} List;
 
-void initList(Node head);
+typedef struct ListNode *LinkedList;
 
-bool insert(Node head,Element data,int index);
+void initList(LinkedList head);
 
-bool deleteIndex(Node head,int index);
+bool insert(LinkedList head,Element data,int index);
 
+bool deleteIndex(LinkedList head,int index);
 
-void printList(Node head);
+Element * getList(LinkedList head, int index);
+
+void printList(LinkedList head);
 
 #endif //LINKEDLIST_CLION_LINKEDLIST_H

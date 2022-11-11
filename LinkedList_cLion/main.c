@@ -13,6 +13,10 @@ int main() {
 
     deleteIndex(&head,5);
     printList(&head);
+    printf("\n");
+
+    Node node = getList(&head,5);
+    printf("getList %d",node->data);
 
     return 0;
 }
