@@ -4,6 +4,7 @@
 
 #ifndef STACK_LINKEDLIST_STACK_H
 #define STACK_LINKEDLIST_STACK_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -13,15 +14,15 @@ typedef int Element;
 
 struct StackNode {
     Element data;
-    struct StackNode * next;
+    struct StackNode *next;
 };
 
-typedef struct StackNode * Node;
+typedef struct StackNode *Node;
 typedef struct StackNode *Stack;
 
-bool initStack(Stack stack);
+bool initStack(Node head);
 
-bool push(Stack stack,Element data);
+bool push(Stack stack, Element data);
 
 Element pop(Stack stack);
 

@@ -3,14 +3,46 @@
 //
 #include "Stack.h"
 
-bool initStack(Stack stack){
-
+Node createNode(void ){
+    Node node = malloc(sizeof (struct StackNode));
+    if (NULL != node){
+        memset(node,0,sizeof (struct StackNode));
+    }
+    return node;
 }
 
-bool push(Stack stack,Element data);
+bool initStack(Node head){
+    head->next = NULL;
+}
 
-Element pop(Stack stack);
+bool push(Stack stack,Element data){
+    Node node = createNode();
+    if (NULL == node){
+        return false;
+    }
 
-void printStack(Stack stack);
+    node->next = stack->next;
+    node->data = data;
+    stack->next = node;
+    return true;
+}
 
-bool isEmpty(Stack stack);
+Element pop(Stack stack){
+    Node top = stack->next;
+    stack->next = stack->next->next;
+    Element data = top->data;
+    free(top);
+    return data;
+}
+
+void printStack(Node head){
+    head = head->next;
+    while (head){
+        printf("%d ", head->data);
+        head = head->next;
+    }
+    printf("\n");
+}
+bool isEmpty(Stack stack){
+    return stack->next == NULL;
+}
