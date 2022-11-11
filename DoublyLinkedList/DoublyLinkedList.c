@@ -2,7 +2,6 @@
 // Created by 曾长欢 on 2022/11/11.
 //
 #include "DoublyLinkedList.h"
-#include <string.h>
 
 void initNode(Node node) {
     node->next = node->prev = NULL;
