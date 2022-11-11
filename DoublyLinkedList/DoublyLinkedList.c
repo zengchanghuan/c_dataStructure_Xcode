@@ -9,9 +9,9 @@ void initNode(Node node) {
 }
 
 Node createNode(void) {
-    Node node = malloc(sizeof(Node));
+    Node node = malloc(sizeof(struct DListNode));
     if (NULL != node) {
-        memset(node, 0, sizeof(Node));
+        memset(node, 0, sizeof(struct DListNode));
     }
     return node;
 }
@@ -26,8 +26,8 @@ bool insertList(Node head, Element element, int index) {
             return false;
         }
     }
-    Node node = malloc(sizeof(struct DListNode));  //创建新的结点
-//    Node node = createNode();
+//    Node *node = malloc(sizeof(Node));  //创建新的结点
+    Node node = createNode();
     if (node == NULL) {
         return false;
     }

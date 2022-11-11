@@ -17,6 +17,7 @@ struct DListNode {
     //前驱
     struct DListNode *prev;
 };
+//此重命名需要注意是否带*号,带*号直接用结构体申请内存，malloc(sizeof(struct DListNode))
 typedef struct DListNode *Node;
 typedef struct DListNode *DoublyLinkedList;
 

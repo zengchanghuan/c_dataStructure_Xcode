@@ -11,9 +11,9 @@
 
 
 DuLNode *createNode(void) {
-    DuLNode *node = malloc(sizeof(DuLNode));
+    DuLNode *node = malloc(sizeof(struct  DuLNode));
     if (node != NULL) {
-        memset(node, 0, sizeof(DuLNode));
+        memset(node, 0, sizeof(struct DuLNode));
 
     }
     return node;
