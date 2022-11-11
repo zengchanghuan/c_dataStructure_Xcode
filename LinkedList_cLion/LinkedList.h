@@ -24,8 +24,9 @@ void initList(Node head);
 
 bool insert(Node head,Element data,int index);
 
+bool deleteIndex(Node head,int index);
+
 
 void printList(Node head);
 
-void deleteIndex(Node head,int index);
 #endif //LINKEDLIST_CLION_LINKEDLIST_H

@@ -44,6 +44,27 @@ bool insert(Node head,Element data,int index){
 
 }
 
-void deleteIndex(Node head,int index){
+bool deleteIndex(Node head,int index){
+    //左边界
+    if(index < 1){
+        return false;
+    }
+
+    while (--index){
+        head = head->next;
+        if (NULL == head){
+            return false;
+        }
+    }
+
+    if (head->next == NULL){
+        return false;
+    }
+
+    Node temp = head->next;
+    head->next = head->next->next;
+    free(temp);
+    return true;
+
 
 }

@@ -9,7 +9,10 @@ int main() {
 
     }
     printList(&head);
-
     printf("\n");
+
+    deleteIndex(&head,5);
+    printList(&head);
+
     return 0;
 }
