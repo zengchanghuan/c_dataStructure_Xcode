@@ -15,12 +15,12 @@ struct QueueNode {
     Element data;
     struct QueueNode *next;
 };
+typedef struct QueueNode *Node;
 
 struct LinkedQueue{
-    QueueNode front, rear;
+    Node front, rear;
 };
 
-typedef struct QueueNode *Node;
 typedef struct LinkedQueue *Queue;
 
 bool initQueue(Queue queue);
