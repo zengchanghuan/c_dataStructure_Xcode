@@ -44,3 +44,27 @@ bool insertList(Node head, Element element, int index) {
     node->prev = head;
     return true;
 }
+
+bool deleteIndex(DoublyLinkedList head,int index){
+    if (index < 1){
+        return false;
+    }
+
+    while (--index){
+        head = head->next;
+        if (NULL == head){
+            return false;
+        }
+    }
+
+    Node temp = head->next;
+
+    if (head->next->next){
+        head->next->next->prev = head;
+        head->next = head->next->next;
+    } else{
+        head->next = NULL;
+    }
+    free(temp);
+    return true;
+}

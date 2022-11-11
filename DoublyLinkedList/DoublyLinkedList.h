@@ -25,4 +25,5 @@ void initNode(Node node);
 
 bool insertList(DoublyLinkedList head, Element element, int index);
 
+bool deleteIndex(DoublyLinkedList head,int index);
 #endif //DOUBLYLINKEDLIST_DOUBLYLINKEDLIST_H

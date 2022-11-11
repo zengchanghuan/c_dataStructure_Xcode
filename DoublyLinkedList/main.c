@@ -8,6 +8,9 @@ int main() {
         insertList(&head, i * 100, i);
     }
     Node node = &head;
+
+    /*
+    Node node = &head;
     do {
         node = node->next;
         printf("%d -> ", node->data);
@@ -18,6 +21,13 @@ int main() {
         printf("%d -> ", node->data);
         node = node->prev;
     } while (node->prev != NULL);
+    printf("\n");
+    */
+    deleteIndex(&head,1);
+    do {
+        node = node->next;
+        printf("%d -> ", node->data);
+    } while (node->next != NULL);
     printf("\n");
 //    printf("sizeList = %d \n", sizeList(&head));
 
