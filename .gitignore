@@ -236,3 +236,8 @@ Queue/cmake-build-debug/CMakeFiles/3.23.2/CMakeSystem.cmake
 Queue/cmake-build-debug/CMakeFiles/3.23.2/CompilerIdC/CMakeCCompilerId.c
 Queue/cmake-build-debug/CMakeFiles/3.23.2/CompilerIdC/CMakeCCompilerId.o
 Queue/cmake-build-debug/Testing/Temporary/LastTest.log
+Queue/cmake-build-debug/.ninja_deps
+Queue/cmake-build-debug/.ninja_log
+Queue/cmake-build-debug/Queue
+Queue/cmake-build-debug/CMakeFiles/Queue.dir/main.c.o
+Queue/cmake-build-debug/CMakeFiles/Queue.dir/Queue.c.o
