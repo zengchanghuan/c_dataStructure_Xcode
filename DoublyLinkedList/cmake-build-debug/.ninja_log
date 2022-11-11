@@ -1,0 +1,26 @@
+# ninja log v5
+0	49	1668145780255880399	CMakeFiles/DoublyLinkedList.dir/main.c.o	dd5af9bb188f3cac
+0	53	1668145780260808179	CMakeFiles/DoublyLinkedList.dir/DoublyLinkedList.c.o	de94863920e95fde
+54	107	1668145780314861129	DoublyLinkedList	b22143f41bb3f388
+1	56	1668145825975621848	CMakeFiles/DoublyLinkedList.dir/main.c.o	dd5af9bb188f3cac
+56	109	1668145826028721158	DoublyLinkedList	b22143f41bb3f388
+1	77	1668145891366007837	CMakeFiles/DoublyLinkedList.dir/DoublyLinkedList.c.o	de94863920e95fde
+77	137	1668145891426906905	DoublyLinkedList	b22143f41bb3f388
+1	63	1668146221888179807	CMakeFiles/DoublyLinkedList.dir/DoublyLinkedList.c.o	de94863920e95fde
+63	125	1668146221950504489	DoublyLinkedList	b22143f41bb3f388
+0	55	1668146270889347919	CMakeFiles/DoublyLinkedList.dir/DoublyLinkedList.c.o	de94863920e95fde
+56	108	1668146270942640902	DoublyLinkedList	b22143f41bb3f388
+1	59	1668146387929163173	CMakeFiles/DoublyLinkedList.dir/main.c.o	dd5af9bb188f3cac
+60	114	1668146387984774993	DoublyLinkedList	b22143f41bb3f388
+1	54	1668146418421942709	CMakeFiles/DoublyLinkedList.dir/main.c.o	dd5af9bb188f3cac
+54	110	1668146418479237174	DoublyLinkedList	b22143f41bb3f388
+1	62	1668146525644592225	CMakeFiles/DoublyLinkedList.dir/DoublyLinkedList.c.o	de94863920e95fde
+62	115	1668146525697513388	DoublyLinkedList	b22143f41bb3f388
+0	55	1668146554224809102	CMakeFiles/DoublyLinkedList.dir/DoublyLinkedList.c.o	de94863920e95fde
+55	111	1668146554281603486	DoublyLinkedList	b22143f41bb3f388
+1	69	1668146595241272089	CMakeFiles/DoublyLinkedList.dir/DoublyLinkedList.c.o	de94863920e95fde
+69	129	1668146595301529165	DoublyLinkedList	b22143f41bb3f388
+1	52	1668146769119798905	CMakeFiles/DoublyLinkedList.dir/main.c.o	dd5af9bb188f3cac
+53	104	1668146769171916135	DoublyLinkedList	b22143f41bb3f388
+1	53	1668146784695734873	CMakeFiles/DoublyLinkedList.dir/main.c.o	dd5af9bb188f3cac
+53	112	1668146784754453885	DoublyLinkedList	b22143f41bb3f388
