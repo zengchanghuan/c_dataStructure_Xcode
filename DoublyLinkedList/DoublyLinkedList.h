@@ -5,20 +5,23 @@
 #ifndef DOUBLYLINKEDLIST_DOUBLYLINKEDLIST_H
 #define DOUBLYLINKEDLIST_DOUBLYLINKEDLIST_H
 
+#include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 
 typedef int Element;
-struct DNode{
+struct DListNode {
     Element data;
-    struct DNode *next;
-    struct DNode *prev;
+    //后续
+    struct DListNode *next;
+    //前驱
+    struct DListNode *prev;
 };
+typedef struct DListNode *Node;
+typedef struct DListNode *DoublyLinkedList;
 
-typedef struct DNode *Node;
+void initNode(Node node);
 
-typedef struct DNode *DoublyLinkedList;
+bool insertList(DoublyLinkedList head, Element element, int index);
 
-void initList(Node node);
-
-bool insertList(DoublyLinkedList head,Element data,int index);
 #endif //DOUBLYLINKEDLIST_DOUBLYLINKEDLIST_H

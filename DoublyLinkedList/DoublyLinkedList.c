@@ -1,16 +1,14 @@
 //
 // Created by 曾长欢 on 2022/11/11.
 //
-#include <stddef.h>
-#include <stdlib.h>
-#include <string.h>     // 提供 strstr 原型
 #include "DoublyLinkedList.h"
+#include <string.h>
 
-void initList(Node node) {
+void initNode(Node node) {
     node->next = node->prev = NULL;
 }
 
-Node *createNode(void) {
+Node createNode(void) {
     Node node = malloc(sizeof(Node));
     if (NULL != node) {
         memset(node, 0, sizeof(Node));
@@ -18,36 +16,31 @@ Node *createNode(void) {
     return node;
 }
 
-bool insertList(DoublyLinkedList head, Element data, int index) {
+bool insertList(Node head, Element element, int index) {
     if (index < 1) {
         return false;
-    }
-
+    }  //跟单链表一样，还是先找到对应的位置
     while (--index) {
         head = head->next;
-        if (NULL == head) {
+        if (head == NULL) {
             return false;
         }
     }
-
+    Node node = malloc(sizeof(struct DListNode));  //创建新的结点
 //    Node node = createNode();
-    Node node = malloc(sizeof(Node));  //创建新的结点
-
-    if (NULL == node) {
+    if (node == NULL) {
         return false;
     }
-    node->data = data;
+    node->data = element;
 
-    if (head->next != NULL) {
-//        node->next = head->next;
-//        head->next->prev = node;
-        head->next->prev = node;
+    if (head->next) {   //首先处理后继结点，现在有两种情况，一种是后继结点不存在的情况，还有一种是后继结点存在的情况
+        head->next->prev = node;   //如果存在则修改对应的两个指针
         node->next = head->next;
     } else {
-        node->next = NULL;
+        node->next = NULL;   //不存在直接将新结点的后继指针置为NULL
     }
-    head->next = node;
+
+    head->next = node;   //接着是前驱结点，直接操作就行
     node->prev = head;
     return true;
-
 }
