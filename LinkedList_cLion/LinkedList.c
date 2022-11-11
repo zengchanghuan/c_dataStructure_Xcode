@@ -81,4 +81,25 @@ Element * getList(LinkedList head, int index) {
     } while (--index);
     return &head->data;
 }
+int getSize(LinkedList head){
+    int  i = 0;
+    while (head->next){
+        head = head->next;
+        i++;
+    }
+    return i;
+}
 
+int findList(Node head, Element data){
+    head = head->next;
+    int i = 1;
+    while (head){
+        if (head->data == data){
+            return i;
+        }
+
+        head = head->next;
+        i++;
+    }
+    return -1;
+}

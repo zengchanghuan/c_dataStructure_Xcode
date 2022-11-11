@@ -16,10 +16,6 @@ struct ListNode{
 
 typedef struct ListNode *Node;
 
-//typedef struct LinkedList{
-//    Node head;
-//} List;
-
 typedef struct ListNode *LinkedList;
 
 void initList(LinkedList head);
@@ -29,6 +25,10 @@ bool insert(LinkedList head,Element data,int index);
 bool deleteIndex(LinkedList head,int index);
 
 Element * getList(LinkedList head, int index);
+
+int getSize(LinkedList head);
+
+int findList(Node head, Element element);
 
 void printList(LinkedList head);
 

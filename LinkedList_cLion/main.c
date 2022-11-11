@@ -8,15 +8,15 @@ int main() {
         insert(&head,i * 100,i);
 
     }
+//    printList(&head);
+    printf("\n");
+
+//    deleteIndex(&head,5);
     printList(&head);
     printf("\n");
 
-    deleteIndex(&head,5);
-    printList(&head);
-    printf("\n");
-
-    Node node = getList(&head,5);
-    printf("getList %d",node->data);
+//    Node node = getList(&head,5);
+    printf("getList %d", findList(&head,500));
 
     return 0;
 }
