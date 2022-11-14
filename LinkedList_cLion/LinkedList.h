@@ -32,4 +32,10 @@ int findListValue(Node head, Element element);
 
 void printList(LinkedList head);
 
+bool isEmpty(LinkedList head);
+
+void clear(LinkedList head);
+
+void destroy(LinkedList head);
+
 #endif //LINKEDLIST_CLION_LINKEDLIST_H

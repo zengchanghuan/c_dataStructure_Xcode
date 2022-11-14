@@ -113,6 +113,27 @@ int getSize(LinkedList head) {
     }
     return size;
 }
+bool isEmpty(LinkedList head){
+    assert(head != NULL);
+
+    return head->next == NULL;
+}
+
+void clear(LinkedList head){
+    assert(head != NULL);
+    while (head->next != NULL){
+        Node s = head->next;
+        head->next = head->next->next;
+        free(s);
+    }
+}
+
+void destroy(LinkedList head){
+    assert(head != NULL);
+    clear(&head);
+    head->next = NULL;
+    free(head);
+}
 /* 第一版实现
 void initList(LinkedList head) {
     head->next = NULL;

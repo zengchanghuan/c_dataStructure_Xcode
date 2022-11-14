@@ -22,13 +22,22 @@ int main() {
     printf(" size = %d", getSize(&head));
     printf("\n");
 
+
     printList(&head);
 
-
-//    Node node = getList(&head,5);
     printf("\n");
 
-    printf("findListValue %d", findListValue(&head,1000));
+    printf("isEmpty %d", isEmpty(&head));
+    printf("\n");
+
+//    Node node = getList(&head,5);
+    clear(&head);
+    printf("isEmpty %d", isEmpty(&head));
+
+    printf("\n");
+    printList(&head);
+
+//    printf("findListValue %d", findListValue(&head,1000));
 
     return 0;
 }
