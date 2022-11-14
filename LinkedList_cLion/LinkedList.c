@@ -5,12 +5,118 @@
 #include <stddef.h>
 #include <stdlib.h>
 #include <printf.h>
+#include <assert.h>
 #include "LinkedList.h"
 
 void initList(LinkedList head) {
     head->next = NULL;
 }
 
+void printList(LinkedList head) {
+    assert(head != NULL);
+    while (head->next) {
+        printf("%d->", head->next->data);
+        head = head->next;
+    }
+}
+
+bool insert(LinkedList head, Element data, int index) {
+    assert(head != NULL);
+    //左边界
+    if (index < 1) {
+        return false;
+    }
+    //找到要插入的位置
+    int i = 1;
+    Node p = head;
+    while (p->next != NULL && i < index) {
+        p = p->next;
+        i = i + 1;
+    }
+
+    //右边界
+    if (index > i) {
+        return false;
+    }
+    Node node = malloc(sizeof(struct ListNode));
+    node->data = data;
+
+    //关键代码
+    node->next = p->next;
+    p->next = node;
+
+
+}
+
+bool deleteIndex(LinkedList head, int index) {
+    assert(head != NULL);
+    if (index < 1) {
+        return false;
+    }
+    Node p = head;
+    int i = 1;
+
+    while (p->next != NULL && i < index) {
+        p = p->next;
+        i = i + 1;
+    }
+    Node temp = p->next;
+    p->next = p->next->next;
+    temp->next = NULL;
+    free(temp);
+    return true;
+}
+
+Element getListIndex2(LinkedList head, int index) {
+    if (index < 1) {
+        return false;
+    }
+
+    do {
+        head = head->next;
+        if (head == NULL) {
+            return NULL;
+        }
+    } while (--index);
+    return head->data;
+}
+
+Element getListIndex(LinkedList head, int index) {
+    assert(head != NULL);
+    if (index < 1) {
+        return false;
+    }
+    Node p = head->next;
+    int i = 1;
+    while (p != NULL && i < index) {
+        p = p->next;
+        i = i + 1;
+    }
+    return p->data;
+}
+int findListValue(Node head, Element data){
+    assert(head != NULL);
+    int i = 1;
+    while(head->next != NULL && head->next->data != data){
+        head = head->next;
+        i = i + 1;
+    }
+    return i;
+
+}
+int getSize(LinkedList head) {
+    assert(head != NULL);
+    int size = 0;
+    while (head->next != NULL) {
+        head = head->next;
+        size = size + 1;
+    }
+    return size;
+}
+/* 第一版实现
+void initList(LinkedList head) {
+    head->next = NULL;
+}
 
 void printList(LinkedList head) {
     while (head->next) {
@@ -68,7 +174,7 @@ bool deleteIndex(LinkedList head, int index) {
     return true;
 }
 
-Element * getList(LinkedList head, int index) {
+Element  getListIndex(LinkedList head, int index) {
     if (index < 1) {
         return false;
     }
@@ -79,8 +185,9 @@ Element * getList(LinkedList head, int index) {
             return NULL;
         }
     } while (--index);
-    return &head->data;
+    return head->data;
 }
+
 int getSize(LinkedList head){
     int  i = 0;
     while (head->next){
@@ -90,7 +197,7 @@ int getSize(LinkedList head){
     return i;
 }
 
-int findList(Node head, Element data){
+int findListValue(Node head, Element data){
     head = head->next;
     int i = 1;
     while (head){
@@ -103,3 +210,4 @@ int findList(Node head, Element data){
     }
     return -1;
 }
+*/

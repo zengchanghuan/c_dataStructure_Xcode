@@ -24,11 +24,11 @@ bool insert(LinkedList head,Element data,int index);
 
 bool deleteIndex(LinkedList head,int index);
 
-Element * getList(LinkedList head, int index);
+Element getListIndex(LinkedList head, int index);
 
 int getSize(LinkedList head);
 
-int findList(Node head, Element element);
+int findListValue(Node head, Element element);
 
 void printList(LinkedList head);
 

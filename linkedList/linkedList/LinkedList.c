@@ -12,12 +12,12 @@
 
 //private method
 ListNode * createNode(void){
-    ListNode *sentinelNode = malloc(sizeof(ListNode));
-    if(NULL == sentinelNode){
+    ListNode *node = malloc(sizeof(ListNode));
+    if(NULL == node){
         return NULL;
     }
-    memset(sentinelNode, 0, sizeof(ListNode));
-    return  sentinelNode;
+    memset(node, 0, sizeof(ListNode));
+    return  node;
 }
 
 void FreeNode(ListNode *node){
