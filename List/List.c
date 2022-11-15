@@ -15,11 +15,12 @@ void insert2(struct node **head, int val) {
 
 }
 
-void insert(struct node **head, int val) {
+void insert(List *head, int val) {
     struct node *new = (struct node *) malloc(sizeof(struct node));
     new->data = val;
-    if (*head)
+    if (*head) {
         new->next = *head;
+    }
     *head = new;
 
 }
