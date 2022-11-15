@@ -12,12 +12,16 @@ struct node{
 
 typedef struct node *Node;
 typedef Node List;
-//void insert(struct node **head, int val);
+
+void initList(List *list);
+//在链表头部插入
 void insertFront(List *list, int val);
 
 // 在链表尾部插入
 void insertBack(List *list, int val);
+
 void printList(List list);
+
 /*
 List * makelist();
 void add(int data, List * list);

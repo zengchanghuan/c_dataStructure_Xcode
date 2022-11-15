@@ -15,13 +15,17 @@ void insertFront2(struct node **head, int val) {
     *head = new;
 
 }
-void insertBack(List *pHead, int data) {
-    assert(pHead);
-    if(NULL == *pHead)
+void initList(List *list){
+    assert(list);
+    *list = NULL;
+}
+void insertBack(List *list, int data) {
+    assert(list);
+    if(NULL == *list)
     {
-        *pHead = (Node)malloc(sizeof(Node));
-        (*pHead)->data = data;
-        (*pHead)->next = NULL;
+        *list = (Node)malloc(sizeof(Node));
+        (*list)->data = data;
+        (*list)->next = NULL;
     }
     else
     {
@@ -30,7 +34,7 @@ void insertBack(List *pHead, int data) {
         NewNode = (Node)malloc(sizeof(Node));		//创造新结点
         NewNode->data = data;
         NewNode->next = NULL;
-        tag = *pHead;
+        tag = *list;
         while(tag->next)
         {
             tag = tag->next;
@@ -40,11 +44,9 @@ void insertBack(List *pHead, int data) {
     }
 }
 void insertFront(List *list, int val) {
+    assert(list);
     struct node *new = (struct node *) malloc(sizeof(struct node));
     new->data = val;
-
-//    printf("*list 指针（地址）的值为：OX%p\n", *list);
-
     if (*list) {
         new->next = *list;
     }

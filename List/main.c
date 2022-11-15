@@ -3,12 +3,19 @@
 #include "List.h"
 
 
-
-
-
-
-
-int main(){
+int main() {
+//    List list = NULL;
+    Node list;
+    initList(&list);
+    for (int i = 1; i < 7; ++i) {
+        insertBack(&list,i * 100);
+    }
+    printf("尾部插入\n");
+    printList(list);
+    printf("\n");
+}
+/*
+int main2(){
     List list = NULL;
 
     insertBack(&list, 1);
@@ -33,3 +40,4 @@ int main(){
     printList(list2);
     printf("\n");
 }
+*/
