@@ -11,8 +11,25 @@
 int main(){
     List list = NULL;
 
-    insert(&list, 1);
-    insert(&list, 2);
-    insert(&list, 3);
+    insertBack(&list, 1);
+    insertBack(&list, 2);
+    insertBack(&list, 3);
+    insertBack(&list, 4);
+    insertBack(&list, 5);
+    insertBack(&list, 6);
+    printf("尾部插入\n");
+
     printList(list);
+    printf("\n");
+
+    List list2 = NULL;
+    insertFront(&list2, 1);
+    insertFront(&list2, 2);
+    insertFront(&list2, 3);
+    insertFront(&list2, 4);
+    insertFront(&list2, 5);
+    insertFront(&list2, 6);
+    printf("头部插入\n");
+    printList(list2);
+    printf("\n");
 }
