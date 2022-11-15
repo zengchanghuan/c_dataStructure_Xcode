@@ -7,16 +7,16 @@
 #include <stdlib.h>
 
 void insert(struct node **head, int val) {
-    struct node *new = (struct node *)malloc(sizeof(struct node));
+    struct node *new = (struct node *) malloc(sizeof(struct node));
     new->data = val;
-    if(*head)
+    if (*head)
         new->next = *head;
     *head = new;
 
 }
 
-void print_list(struct node *list) {
-    while(list) {
+void printList(List list) {
+    while (list) {
         printf("%d->", list->data);
         list = list->next;
     }

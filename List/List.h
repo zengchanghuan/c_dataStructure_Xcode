@@ -11,8 +11,9 @@ struct node{
 };
 
 typedef struct node *Node;
+typedef Node List;
 void insert(struct node **head, int val);
-void print_list(struct node *list);
+void printList(List list);
 /*
 List * makelist();
 void add(int data, List * list);
