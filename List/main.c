@@ -13,6 +13,9 @@ int main() {
     printf("尾部插入\n");
     printList(list);
     printf("\n");
+    deleteBack(&list);
+    printList(list);
+    printf("\n");
 }
 /*
 int main2(){

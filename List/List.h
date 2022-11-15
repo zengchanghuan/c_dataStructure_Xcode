@@ -9,16 +9,21 @@ struct node{
     Element data;
     struct node *next;
 };
-
+//注意使用二级指针的地方
 typedef struct node *Node;
 typedef Node List;
 
+//初始化链表
 void initList(List *list);
-//在链表头部插入
-void insertFront(List *list, int val);
 
 // 在链表尾部插入
-void insertBack(List *list, int val);
+void insertBack(List *list, int data);
+
+//删除链表最后一个节点
+void deleteBack(List *list);
+
+//在链表头部插入
+void insertFront(List *list, int data);
 
 void printList(List list);
 

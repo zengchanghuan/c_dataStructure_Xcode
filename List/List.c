@@ -43,6 +43,31 @@ void insertBack(List *list, int data) {
 
     }
 }
+
+void deleteBack(List *list){
+    assert(list);
+    Node pre = *list;
+    Node cur = pre->next;
+
+    if (NULL == *list){
+        return;
+    }
+
+    if (NULL == (*list)->next){
+        free(*list);
+        *list = NULL;
+    } else{
+        while (cur->next){
+            pre = cur;
+            cur = cur->next;
+        }
+        free(cur);
+        pre->next = NULL;
+    }
+
+
+
+}
 void insertFront(List *list, int val) {
     assert(list);
     struct node *new = (struct node *) malloc(sizeof(struct node));
