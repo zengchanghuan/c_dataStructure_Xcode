@@ -9,10 +9,10 @@
 
 
 int main(){
-    struct node *head = NULL;
+    List list = NULL;
 
-    insert(&head, 1);
-    insert(&head, 2);
-    insert(&head, 3);
-    print_list(head);
+    insert(&list, 1);
+    insert(&list, 2);
+    insert(&list, 3);
+    printList(list);
 }

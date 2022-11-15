@@ -6,6 +6,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void insert2(struct node **head, int val) {
+    struct node *new = (struct node *) malloc(sizeof(struct node));
+    new->data = val;
+    if (*head)
+        new->next = *head;
+    *head = new;
+
+}
+
 void insert(struct node **head, int val) {
     struct node *new = (struct node *) malloc(sizeof(struct node));
     new->data = val;
