@@ -4,10 +4,16 @@
 
 #ifndef LIST_LIST_H
 #define LIST_LIST_H
-typedef struct node Node;
+typedef int Element;
+struct node{
+    Element data;
+    struct node *next;
+};
 
-typedef struct list List;
-
+typedef struct node *Node;
+void insert(struct node **head, int val);
+void print_list(struct node *list);
+/*
 List * makelist();
 void add(int data, List * list);
 void delete(int data, List * list);
@@ -15,5 +21,5 @@ void display(List * list);
 void reverse(List * list);
 void reverse_using_two_pointers(List * list);
 void destroy(List * list);
-
+*/
 #endif //LIST_LIST_H
