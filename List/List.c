@@ -351,3 +351,13 @@ void deleteAllData(List *list, Element data) {
         }
     }
 }
+int size(const List list){
+    assert(list);
+    int size = 0;
+    Node p = list;
+    while (p){
+        p = p->next;
+        size++;
+    }
+    return size;
+}

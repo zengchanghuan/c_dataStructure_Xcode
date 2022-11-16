@@ -25,6 +25,8 @@ int main() {
     deleteAllData(&list,99);
     printList(list);
     printf("\n");
+    printf("size %d\n", size(list));
+
 }
 /*
 int main2(){
