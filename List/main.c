@@ -21,12 +21,12 @@ int main() {
 //    insertIndex(list,1,99);
 //    insertBack(&list,32);
 //    insertIndex(list,1,99);
-    insertFront(&list,999);
+    insertFront(&list,99);
     printList(list);
     printf("\n");
-//    printf("deleteIndex\n");
+    printf("deleteData\n");
 //    deleteIndex(list,1);
-//    deleteAllData(&list,99);
+    deleteData(&list,600);
     printList(list);
     printf("\n");
     printf("isEmpty %d\n", isEmpty(list));

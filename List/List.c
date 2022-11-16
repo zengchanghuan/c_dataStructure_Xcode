@@ -299,6 +299,7 @@ Node findNode(List *list,Element data) {
     }
 }
 void deleteData(List *list, Element data) {
+    /*
     assert(list);
     Node pre = *list;
     Node cur = pre->next;
@@ -308,7 +309,8 @@ void deleteData(List *list, Element data) {
     pre->next = cur->next;
     free(cur);
     cur = NULL;
-    /*
+    */
+
     Node pre = *list;
     Node cur = pre->next;
     if (NULL == pre){
@@ -326,7 +328,7 @@ void deleteData(List *list, Element data) {
             cur = NULL;
         }
     }
-    */
+
 }
 
 void deleteData2(List *list, Element data) {
