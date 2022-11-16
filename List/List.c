@@ -361,3 +361,12 @@ int size(const List list){
     }
     return size;
 }
+
+Node getFront(List list){
+    assert(list);
+    if (NULL == list){
+        return NULL;
+    } else {
+        return list;
+    }
+}

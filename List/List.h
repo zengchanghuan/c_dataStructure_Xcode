@@ -38,6 +38,9 @@ void deleteData(List *list,Element data);
 void deleteAllData(List *list, Element data);
 
 int size(const List list);
+
+//获取链表中第一个结点
+Node getFront(List list);
 // TODO
 bool deleteIndex(List list, int index);
 
