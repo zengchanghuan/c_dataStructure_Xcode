@@ -241,21 +241,21 @@ void printList(List list) {
 
 void deleteData(List *list,Element data){
     assert(list);
-    Node newNode = *list;
-    Node newNodet = newNode->next;
-    if (NULL == newNode){
+    Node pre = *list;
+    Node cur = pre->next;
+    if (NULL == pre){
         return;
     } else{
-        while (newNodet->data != data && newNodet->next != NULL){
-            newNode = newNodet;
-            newNodet = newNode->next;
+        while (cur->data != data && cur->next != NULL){
+            pre = cur;
+            cur = pre->next;
         }
-        if (NULL== newNodet->next){
+        if (NULL== cur->next){
             return;
         } else{
-            newNode->next = newNodet->next;
-            free(newNodet);
-            newNodet = NULL;
+            pre->next = cur->next;
+            free(cur);
+            cur = NULL;
         }
     }
     /*
