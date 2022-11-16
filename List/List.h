@@ -33,6 +33,8 @@ void deleteFront(List *list);
 //按位序插入
 bool insertIndex(List list, int index, Element data);
 
+bool deleteIndex(List list, int index);
+
 void deleteData(List *list,Element data);
 
 void deleteAllData(List *list, Element data);
@@ -40,9 +42,12 @@ void deleteAllData(List *list, Element data);
 int size(const List list);
 
 //获取链表中第一个结点
-Node getFront(List list);
-// TODO
-bool deleteIndex(List list, int index);
+Node getFront(const List list);
+
+// 获取链表中最后一个节点
+Node getBack(const List list);
+
+bool isEmpty(const List list);
 
 /*
 Node findData( Node list,Element data);

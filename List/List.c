@@ -182,7 +182,48 @@ bool deleteIndex(List list, int index) {
         // TODO 按位查找 查找到的结点赋值给p 此方法可以抽出来 上面的插入也用到了
         Node p = list;
         int j = 0;
-        while (index != j) {
+        //p && j < index - 1  index != j
+        while (p && j < index - 1) {
+            p = p->next;
+            j++;
+        }
+        if (!p) {
+            return false;
+        }
+
+        return DeleteNextLNode(p);
+
+//        Node p = list;
+//        int j = 0;    //计数
+//        while (p && j < index - 1) {
+//            p = p->next;
+//            j++;
+//        }
+//        if (!p) {    // i值不合法：超过表长度
+//            return false;
+//        }
+//        return DeleteNextLNode(p);
+    }
+
+
+}
+
+bool deleteIndex2(List list, int index) {
+    if (index < 1) {
+        return false;
+    }
+    if (index == 1) {
+        Node s = malloc(sizeof(struct node));
+        s = list;
+        list = s->next;
+        free(s);
+        return true;
+    } else {
+        // TODO 按位查找 查找到的结点赋值给p 此方法可以抽出来 上面的插入也用到了
+        Node p = list;
+        int j = 0;
+        //p && j < index - 1  index != j
+        while (p && j < index - 1) {
             p = p->next;
             j++;
         }
@@ -362,11 +403,30 @@ int size(const List list){
     return size;
 }
 
-Node getFront(List list){
+Node getFront(const List list){
     assert(list);
     if (NULL == list){
         return NULL;
     } else {
         return list;
     }
+}
+
+Node getBack(const List list){
+    assert(list);
+    Node pre = list;
+    if (NULL == pre){
+        return NULL;
+    } else {
+        while (pre->next){
+            pre = pre->next;
+        }
+        return pre;
+    }
+}
+
+bool isEmpty(const List list){
+    assert(list);
+    return list == NULL;
+
 }

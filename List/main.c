@@ -18,14 +18,18 @@ int main() {
 
 //    Node ps = list;
 //    insertIndex(&list, ps, 424);
-    insertIndex(list,1,99);
-    insertIndex(list,1,99);
+//    insertIndex(list,1,99);
+//    insertBack(&list,32);
+//    insertIndex(list,1,99);
+    insertFront(&list,999);
     printList(list);
     printf("\n");
-    deleteAllData(&list,99);
+//    printf("deleteIndex\n");
+//    deleteIndex(list,1);
+//    deleteAllData(&list,99);
     printList(list);
     printf("\n");
-    printf("getFront %d\n", getFront(list)->data);
+    printf("isEmpty %d\n", isEmpty(list));
 
 }
 /*
