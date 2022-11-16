@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include <assert.h>
 
+bool DeleteNextLNode(Node p);
+
 void insertFront2(struct node **head, int val) {
     struct node *new = (struct node *) malloc(sizeof(struct node));
     new->data = val;
@@ -15,28 +17,26 @@ void insertFront2(struct node **head, int val) {
     *head = new;
 
 }
-void initList(List *list){
+
+void initList(List *list) {
     assert(list);
     *list = NULL;
 }
+
 void insertBack(List *list, int data) {
     assert(list);
-    if(NULL == *list)
-    {
-        *list = (Node)malloc(sizeof(Node));
+    if (NULL == *list) {
+        *list = (Node) malloc(sizeof(Node));
         (*list)->data = data;
         (*list)->next = NULL;
-    }
-    else
-    {
+    } else {
 
-        Node NewNode,tag;
-        NewNode = (Node)malloc(sizeof(Node));		//创造新结点
+        Node NewNode, tag;
+        NewNode = (Node) malloc(sizeof(Node));        //创造新结点
         NewNode->data = data;
         NewNode->next = NULL;
         tag = *list;
-        while(tag->next)
-        {
+        while (tag->next) {
             tag = tag->next;
         }
         tag->next = NewNode;
@@ -44,20 +44,20 @@ void insertBack(List *list, int data) {
     }
 }
 
-void deleteBack(List *list){
+void deleteBack(List *list) {
     assert(list);
     Node pre = *list;
     Node cur = pre->next;
 
-    if (NULL == *list){
+    if (NULL == *list) {
         return;
     }
 
-    if (NULL == (*list)->next){
+    if (NULL == (*list)->next) {
         free(*list);
         *list = NULL;
-    } else{
-        while (cur->next){
+    } else {
+        while (cur->next) {
             pre = cur;
             cur = cur->next;
         }
@@ -66,8 +66,8 @@ void deleteBack(List *list){
     }
 
 
-
 }
+
 void insertFront(List *list, int val) {
     assert(list);
     struct node *new = (struct node *) malloc(sizeof(struct node));
@@ -76,6 +76,155 @@ void insertFront(List *list, int val) {
         new->next = *list;
     }
     *list = new;
+}
+
+void deleteFront(List *list) {
+    assert(list);
+    Node pre = *list;
+    Node cur = pre->next;
+    if (NULL == *list) {
+        return;
+    }
+    *list = cur;
+    free(pre);
+}
+Node Find(List list,Element data){
+    assert(list);
+    Node tag;
+    tag = list;
+    while(tag)
+    {
+        if(data == tag->data)
+        {
+            return tag;
+        }
+        tag = tag->next;
+    }
+    return NULL;
+}
+Node findData2(Node list, Element data) {
+    assert(list);
+    Node tag = list;
+
+    while (tag) {
+        if (data == tag->data) {
+            return tag;
+        }
+        tag = tag->next;
+    }
+    return NULL;
+}
+
+bool insertIndex(List list, int index, Element e) {
+    if (index < 1) {
+        // i值不合法，返回false
+        return false;
+    }
+    Node p = list;
+    int j = 0;    //计数
+    while (p && j < index - 1) {
+        p = p->next;
+        j++;
+    }
+    if (!p) {    // i值不合法：超过表长度
+        return false;
+    }
+    Node s = malloc(sizeof(Node));
+// 注：以下三行代码中有顺序要求。
+    s->data = e;
+    s->next = p->next;
+    p->next = s;
+    return true;
+}
+
+bool ListDelete(List L, int i/*,int &e*/) {
+    if (i < 1) {//位序小于1，则报错
+        return false;
+    }
+    Node p, q;
+    p = L;    //指针p为当前扫描的结点,L指向第一个结点
+    int j = 1;    //j的值代表p指向的是第几个结点
+    if (i == 1) { //对删除第一个结点的特殊情况
+        q = L->next;
+        free(p);
+        L = q;
+        return true;
+    }
+    while (p != NULL && j < i - 1) {
+        p = p->next;  //循环找到i-1个结点，且该结点为不为空
+        j++;
+    }
+    if (p == NULL || p->next == NULL)
+        return false;
+    q = p->next;  //令q指向被删除的结点
+//e=q->data;    //用e返回元素的值
+    if (q->next) {
+        p->next = q->next;
+    }//将*q结点从链表中断开
+    free(q);
+    return true;
+}
+
+bool deleteIndex(List list, int index) {
+    if (index < 1) {
+        return false;
+    }
+    if (index == 1) {
+        Node s = malloc(sizeof(struct node));
+        s = list;
+        list = s->next;
+        free(s);
+        return true;
+    } else {
+        // TODO 按位查找 查找到的结点赋值给p 此方法可以抽出来 上面的插入也用到了
+        Node p = list;
+        int j = 0;
+        while (index != j) {
+            p = p->next;
+            j++;
+        }
+        if (!p) {
+            return false;
+        }
+
+        return DeleteNextLNode(p);
+
+//        Node p = list;
+//        int j = 0;    //计数
+//        while (p && j < index - 1) {
+//            p = p->next;
+//            j++;
+//        }
+//        if (!p) {    // i值不合法：超过表长度
+//            return false;
+//        }
+//        return DeleteNextLNode(p);
+    }
+
+
+}
+
+// 后插操作：在p结点后插入数据e
+bool InsertNextNode(Node p, int e) {
+    if (p == NULL) {
+        return false;
+    }
+    Node s = malloc(sizeof(Node));
+    s->next = p->next;
+    s->data = e;
+    p->next = s;
+    return true;
+}
+
+bool DeleteNextLNode(Node p) {
+    if (p == NULL || p->next == NULL) { // p结点是最后一个
+        return false;
+    }
+    Node s = malloc(sizeof(Node));
+    s = p->next;
+    p->next = s->next;
+    free(s);
+    return true;
 }
 
 void printList(List list) {
@@ -88,4 +237,45 @@ void printList(List list) {
 
         list = list->next;
     }
+}
+
+void deleteData(List *list,Element data){
+    assert(list);
+    Node newNode = *list;
+    Node newNodet = newNode->next;
+    if (NULL == newNode){
+        return;
+    } else{
+        while (newNodet->data != data && newNodet->next != NULL){
+            newNode = newNodet;
+            newNodet = newNode->next;
+        }
+        if (NULL== newNodet->next){
+            return;
+        } else{
+            newNode->next = newNodet->next;
+            free(newNodet);
+            newNodet = NULL;
+        }
+    }
+    /*
+    Node head = list;
+    Node pos,tag;
+    pos = Find(list,data);
+
+    if (NULL == *list || NULL == pos){
+        return;
+    }
+
+    if (pos == *list){
+        (*list) = pos->next;
+        free(pos);
+    } else{
+        while (tag->next != pos){
+            tag = tag->next;
+        }
+        tag->next = pos->next;
+        free(pos);
+    }
+    */
 }

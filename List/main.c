@@ -8,12 +8,23 @@ int main() {
     Node list;
     initList(&list);
     for (int i = 1; i < 7; ++i) {
-        insertBack(&list,i * 100);
+        insertBack(&list, i * 100);
     }
     printf("尾部插入\n");
     printList(list);
     printf("\n");
-    deleteBack(&list);
+//    deleteBack(&list);
+//    deleteFront(&list);
+
+//    Node ps = list;
+//    insertIndex(&list, ps, 424);
+    insertIndex(list,1,99);
+    insertIndex(list,1,99);
+    insertIndex(list,1,99);
+    insertIndex(list,1,99);
+    printList(list);
+    printf("\n");
+    deleteData(&list,99);
     printList(list);
     printf("\n");
 }
