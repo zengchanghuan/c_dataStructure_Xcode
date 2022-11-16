@@ -88,24 +88,11 @@ void deleteFront(List *list) {
     *list = cur;
     free(pre);
 }
-Node Find(List list,Element data){
+
+Node Find2(List list, Element data) {
     assert(list);
     Node tag;
     tag = list;
-    while(tag)
-    {
-        if(data == tag->data)
-        {
-            return tag;
-        }
-        tag = tag->next;
-    }
-    return NULL;
-}
-Node findData2(Node list, Element data) {
-    assert(list);
-    Node tag = list;
-
     while (tag) {
         if (data == tag->data) {
             return tag;
@@ -113,6 +100,22 @@ Node findData2(Node list, Element data) {
         tag = tag->next;
     }
     return NULL;
+}
+Node Find(List *list, Element data) {
+    assert(list);
+    Node pre = *list;
+    Node cur= pre->next;
+    if (NULL == pre){
+        return NULL;
+    } else {
+        while (cur->data != data && cur->next != NULL){
+            pre = cur;
+            cur = pre->next;
+        }
+        if (NULL== cur->next){
+            return NULL;
+        }
+    }
 }
 
 bool insertIndex(List list, int index, Element e) {
@@ -238,9 +241,33 @@ void printList(List list) {
         list = list->next;
     }
 }
-
-void deleteData(List *list,Element data){
+Node findNode(List *list,Element data) {
     assert(list);
+    Node pre = *list;
+    Node cur = pre->next;
+    if (NULL == pre) {
+        return NULL;
+    } else {
+        while (cur->data != data && cur->next != NULL) {
+            pre = cur;
+            cur = pre->next;
+        }
+        if (NULL == cur->next) {
+            return NULL;
+        }
+    }
+}
+void deleteData(List *list, Element data) {
+    assert(list);
+    Node pre = *list;
+    Node cur = pre->next;
+
+    Node p = findNode(list,data);
+
+    pre->next = cur->next;
+    free(cur);
+    cur = NULL;
+    /*
     Node pre = *list;
     Node cur = pre->next;
     if (NULL == pre){
@@ -253,6 +280,28 @@ void deleteData(List *list,Element data){
         if (NULL== cur->next){
             return;
         } else{
+            pre->next = cur->next;
+            free(cur);
+            cur = NULL;
+        }
+    }
+    */
+}
+
+void deleteData2(List *list, Element data) {
+    assert(list);
+    Node pre = *list;
+    Node cur = pre->next;
+    if (NULL == pre) {
+        return;
+    } else {
+        while (cur->data != data && cur->next != NULL) {
+            pre = cur;
+            cur = pre->next;
+        }
+        if (NULL == cur->next) {
+            return;
+        } else {
             pre->next = cur->next;
             free(cur);
             cur = NULL;
@@ -278,4 +327,27 @@ void deleteData(List *list,Element data){
         free(pos);
     }
     */
+}
+
+void deleteAllData(List *list, Element data) {
+    assert(list);
+    Node pre,cur;
+    while (NULL != Find(list,data)){
+        pre = *list;
+        cur = pre->next;
+        if (NULL == *list){
+            return;
+        }
+        if (data == pre->data){
+            *list = cur;
+            free(pre);
+        } else {
+            while (cur->data != data){
+                pre = cur;
+                cur = cur->next;
+            }
+            pre->next = cur->next;
+            free(cur);
+        }
+    }
 }

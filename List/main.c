@@ -20,11 +20,9 @@ int main() {
 //    insertIndex(&list, ps, 424);
     insertIndex(list,1,99);
     insertIndex(list,1,99);
-    insertIndex(list,1,99);
-    insertIndex(list,1,99);
     printList(list);
     printf("\n");
-    deleteData(&list,99);
+    deleteAllData(&list,99);
     printList(list);
     printf("\n");
 }

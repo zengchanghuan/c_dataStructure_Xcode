@@ -34,7 +34,7 @@ void deleteFront(List *list);
 bool insertIndex(List list, int index, Element data);
 
 void deleteData(List *list,Element data);
-
+void deleteAllData(List *list, Element data);
 //bool ListDelete(List L, int i/*,int &e*/) ;
 bool deleteIndex(List list, int index);
 
