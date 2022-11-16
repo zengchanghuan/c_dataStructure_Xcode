@@ -89,30 +89,18 @@ void deleteFront(List *list) {
     free(pre);
 }
 
-Node Find2(List list, Element data) {
-    assert(list);
-    Node tag;
-    tag = list;
-    while (tag) {
-        if (data == tag->data) {
-            return tag;
-        }
-        tag = tag->next;
-    }
-    return NULL;
-}
 Node Find(List *list, Element data) {
     assert(list);
     Node pre = *list;
-    Node cur= pre->next;
-    if (NULL == pre){
+    Node cur = pre->next;
+    if (NULL == pre) {
         return NULL;
     } else {
-        while (cur->data != data && cur->next != NULL){
+        while (cur->data != data && cur->next != NULL) {
             pre = cur;
             cur = pre->next;
         }
-        if (NULL== cur->next){
+        if (NULL == cur->next) {
             return NULL;
         }
     }
@@ -192,19 +180,7 @@ bool deleteIndex(List list, int index) {
         }
 
         return DeleteNextLNode(p);
-
-//        Node p = list;
-//        int j = 0;    //计数
-//        while (p && j < index - 1) {
-//            p = p->next;
-//            j++;
-//        }
-//        if (!p) {    // i值不合法：超过表长度
-//            return false;
-//        }
-//        return DeleteNextLNode(p);
     }
-
 
 }
 
@@ -232,17 +208,6 @@ bool deleteIndex2(List list, int index) {
         }
 
         return DeleteNextLNode(p);
-
-//        Node p = list;
-//        int j = 0;    //计数
-//        while (p && j < index - 1) {
-//            p = p->next;
-//            j++;
-//        }
-//        if (!p) {    // i值不合法：超过表长度
-//            return false;
-//        }
-//        return DeleteNextLNode(p);
     }
 
 
@@ -282,57 +247,8 @@ void printList(List list) {
         list = list->next;
     }
 }
-Node findNode(List *list,Element data) {
-    assert(list);
-    Node pre = *list;
-    Node cur = pre->next;
-    if (NULL == pre) {
-        return NULL;
-    } else {
-        while (cur->data != data && cur->next != NULL) {
-            pre = cur;
-            cur = pre->next;
-        }
-        if (NULL == cur->next) {
-            return NULL;
-        }
-    }
-}
+
 void deleteData(List *list, Element data) {
-    /*
-    assert(list);
-    Node pre = *list;
-    Node cur = pre->next;
-
-    Node p = findNode(list,data);
-
-    pre->next = cur->next;
-    free(cur);
-    cur = NULL;
-    */
-
-    Node pre = *list;
-    Node cur = pre->next;
-    if (NULL == pre){
-        return;
-    } else{
-        while (cur->data != data && cur->next != NULL){
-            pre = cur;
-            cur = pre->next;
-        }
-        if (NULL== cur->next){
-            return;
-        } else{
-            pre->next = cur->next;
-            free(cur);
-            cur = NULL;
-        }
-    }
-
-}
-
-void deleteData2(List *list, Element data) {
-    assert(list);
     Node pre = *list;
     Node cur = pre->next;
     if (NULL == pre) {
@@ -350,42 +266,23 @@ void deleteData2(List *list, Element data) {
             cur = NULL;
         }
     }
-    /*
-    Node head = list;
-    Node pos,tag;
-    pos = Find(list,data);
 
-    if (NULL == *list || NULL == pos){
-        return;
-    }
-
-    if (pos == *list){
-        (*list) = pos->next;
-        free(pos);
-    } else{
-        while (tag->next != pos){
-            tag = tag->next;
-        }
-        tag->next = pos->next;
-        free(pos);
-    }
-    */
 }
 
 void deleteAllData(List *list, Element data) {
     assert(list);
-    Node pre,cur;
-    while (NULL != Find(list,data)){
+    Node pre, cur;
+    while (NULL != Find(list, data)) {
         pre = *list;
         cur = pre->next;
-        if (NULL == *list){
+        if (NULL == *list) {
             return;
         }
-        if (data == pre->data){
+        if (data == pre->data) {
             *list = cur;
             free(pre);
         } else {
-            while (cur->data != data){
+            while (cur->data != data) {
                 pre = cur;
                 cur = cur->next;
             }
@@ -394,40 +291,41 @@ void deleteAllData(List *list, Element data) {
         }
     }
 }
-int size(const List list){
+
+int size(const List list) {
     assert(list);
     int size = 0;
     Node p = list;
-    while (p){
+    while (p) {
         p = p->next;
         size++;
     }
     return size;
 }
 
-Node getFront(const List list){
+Node getFront(const List list) {
     assert(list);
-    if (NULL == list){
+    if (NULL == list) {
         return NULL;
     } else {
         return list;
     }
 }
 
-Node getBack(const List list){
+Node getBack(const List list) {
     assert(list);
     Node pre = list;
-    if (NULL == pre){
+    if (NULL == pre) {
         return NULL;
     } else {
-        while (pre->next){
+        while (pre->next) {
             pre = pre->next;
         }
         return pre;
     }
 }
 
-bool isEmpty(const List list){
+bool isEmpty(const List list) {
     assert(list);
     return list == NULL;
 

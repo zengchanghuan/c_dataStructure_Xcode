@@ -26,7 +26,9 @@ int main() {
     printf("\n");
     printf("deleteData\n");
 //    deleteIndex(list,1);
-    deleteData(&list,600);
+    deleteData(&list,500);
+    deleteData(&list,100);
+
     printList(list);
     printf("\n");
     printf("isEmpty %d\n", isEmpty(list));
